@@ -29,6 +29,7 @@ public class ChessMatch {
         Position from = fromPosition.toPosition();
         Position to = toPosition.toPosition();
         validateSourcePosition(from);
+        validateTargetPosition(from, to);
         Piece capturedPiece = makeMove(from, to);
 
         return (ChessPiece)capturedPiece;
@@ -48,6 +49,12 @@ public class ChessMatch {
         }
         if(!board.piece(position).isThereAnyPossibleMove()){
             throw new ChessException("There is no possible move for chosen piece!");
+        }
+    }
+
+    private void validateTargetPosition(Position from, Position to){
+        if(!board.piece(from).possibleMove(to)){
+            throw new ChessException("The chosen piece can't move to target position!");
         }
     }
 
@@ -78,12 +85,12 @@ public class ChessMatch {
         placeNewPiece('e', 1, new Queen(board, Color.WHITE));
         placeNewPiece('e', 8, new Queen(board, Color.BLACK));
 
-
+        /* 
         for(int i = 0; i < board.getColumns(); i++){
             placeNewPiece((char)('a' + i), 2, new Pawn(board, Color.WHITE));
             placeNewPiece((char)('a' + i), 7, new Pawn(board, Color.BLACK));
         }
-
+        */
     }
 
 }

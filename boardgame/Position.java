@@ -20,11 +20,19 @@ public class Position {
         return column;
     }
 
-    public void setValues(Integer row, Integer column){
+    public void setRow(Integer row) {
+        this.row = row;
+    }
+
+    public void setColumn(Integer column) {
+        this.column = column;
+    }
+
+    public void setValues(int row, int column){
         this.row = row;
         this.column = column;
     }
-    
+
     @Override
     public String toString(){
         return ("(" + row + ", " + column + ")");
