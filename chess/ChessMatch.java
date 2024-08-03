@@ -8,18 +8,31 @@ import chess.pieces.*;
 public class ChessMatch {
     
     private Board board;
+    private int turn;
+    private Color currentPlayer;
 
     public ChessMatch(){
         board = new Board(8, 8);
+        currentPlayer = Color.WHITE;
+        turn = 1;
+        initialSetup();
     }
-
+    
+    public int getTurn(){
+        return turn;
+    }
+    
+    public Color getCurrentPlayer(){
+        return currentPlayer;
+    }
+    
     public ChessPiece[][] getPieces(){
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for(int i = 0; i < board.getRows(); i++){
             for(int j = 0; j < board.getColumns(); j++){
-
+                
                 mat[i][j] = (ChessPiece) board.piece(i, j);
-
+                
             }
         }
         return mat;
@@ -38,44 +51,53 @@ public class ChessMatch {
         validateSourcePosition(from);
         validateTargetPosition(from, to);
         Piece capturedPiece = makeMove(from, to);
+        nextTurn();
 
         return (ChessPiece)capturedPiece;
     }
-
+    
     private Piece makeMove(Position from, Position to){
         Piece p = board.removePiece(from);
         Piece captured = board.removePiece(to);
         board.placePiece(p, to);
-
+        
         return captured;
     }
-
+    
     private void validateSourcePosition(Position position){
         if(!board.thereIsAPiece(position)){
             throw new ChessException("Error moving piece! Source position empty!");
+        }
+        if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
+            throw new ChessException("Chosen piece is not yours!");
         }
         if(!board.piece(position).isThereAnyPossibleMove()){
             throw new ChessException("There is no possible move for chosen piece!");
         }
     }
-
+    
     private void validateTargetPosition(Position from, Position to){
         if(!board.piece(from).possibleMove(to)){
             throw new ChessException("The chosen piece can't move to target position!");
         }
     }
 
+    private void nextTurn(){
+        turn++;
+        currentPlayer = (currentPlayer == Color.WHITE ? Color.BLACK : Color.WHITE);
+    }
+    
     private void placeNewPiece(char column, int row, ChessPiece piece){
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
     }
-
+    
     public void initialSetup(){
         placeNewPiece('a', 1, new Rook(board, Color.WHITE));
         placeNewPiece('h', 1, new Rook(board, Color.WHITE));
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
         placeNewPiece('h', 8, new Rook(board, Color.BLACK));
-
-
+        
+        
         placeNewPiece('b', 1, new Knight(board, Color.WHITE));
         placeNewPiece('g', 1, new Knight(board, Color.WHITE));
         placeNewPiece('b', 8, new Knight(board, Color.BLACK));
