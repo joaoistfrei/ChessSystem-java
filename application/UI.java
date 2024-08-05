@@ -68,6 +68,11 @@ public class UI {
 			System.out.print(chessMatch.getCurrentPlayer());
 		}
 		System.out.print(" to play.");
+		
+		if (ChessMatch.getCheck()){
+			System.out.println();
+			System.out.println("CHECK!");
+		}
 	}
  
     public static void printBoard(ChessPiece[][] pieces){
