@@ -217,10 +217,8 @@ public class ChessMatch {
         placeNewPiece('d', 1, new King(board, Color.WHITE));
         placeNewPiece('d', 8, new King(board, Color.BLACK));
         
-        /* 
         placeNewPiece('e', 1, new Queen(board, Color.WHITE));
         placeNewPiece('e', 8, new Queen(board, Color.BLACK));
-        */
 
         for(int i = 0; i < board.getColumns(); i++){
             placeNewPiece((char)('a' + i), 2, new Pawn(board, Color.WHITE));
