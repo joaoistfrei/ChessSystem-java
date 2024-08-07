@@ -70,7 +70,7 @@ public class UI {
 			}
 			System.out.print(" to play.");
 			
-			if (ChessMatch.getCheck()){
+			if (chessMatch.getCheck()){
 				System.out.println();
 				System.out.println("CHECK!");
 			}
