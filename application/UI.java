@@ -66,7 +66,9 @@ public class UI {
 				System.out.print(ANSI_RESET);
 			}
 			else{
+				System.out.print(ANSI_WHITE);
 				System.out.print(chessMatch.getCurrentPlayer());
+				System.out.print(ANSI_RESET);
 			}
 			System.out.print(" to play.");
 			
@@ -85,7 +87,9 @@ public class UI {
 				System.out.print(ANSI_RESET);
 			}
 			else{
+				System.out.print(ANSI_WHITE);
 				System.out.print(chessMatch.getCurrentPlayer());
+				System.out.print(ANSI_RESET);
 			}
 			System.out.println("!");
 
