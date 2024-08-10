@@ -6,7 +6,8 @@ import boardgame.Position;
 import chess.Color;
 
 public class Bishop extends ChessPiece{
-    
+
+    // construtor
     public Bishop(Board board, Color color){
         super(board, color);
     }

@@ -10,9 +10,10 @@ public class King extends ChessPiece{
 
     private ChessMatch chessMatch;
 
+    // construtor
     public King(Board board, Color color, ChessMatch chessMatch) {
         super(board, color);
-        this.chessMatch = chessMatch;
+        this.chessMatch = chessMatch; // reis precisam ter acesso a partida para poder checar a possibilidade de roque
     }
 
     private boolean testRookCastling(Position position){

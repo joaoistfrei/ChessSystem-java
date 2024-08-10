@@ -29,8 +29,8 @@ public class Board {
         return columns;
     }
 
-    public Piece piece(int row, int column){
-        if(!positionExists(row, column)){
+    public Piece piece(int row, int column){ // funcao igual a de baixo, mas essa passando uma linha e coluna separadas e a de baixo em 
+        if(!positionExists(row, column)){                                                        // uma Posicao, para os multiplos usos
             throw new BoardException("Position (" + row + ", " + column + ") not on the board!");        }
         return (pieces[row][column]);
     }

@@ -35,11 +35,13 @@ public class UI {
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
 	// https://stackoverflow.com/questions/2979383/java-clear-the-console
+
 	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
 	}	
 
+	// a leitura eh de uma ChessPosition, ou seja, tem que ser da forma (a1), (h8) e nao (0 7), (7 0) 
     public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
@@ -99,13 +101,17 @@ public class UI {
     public static void printBoard(ChessPiece[][] pieces){
 
         for(int i = 0; i < pieces.length; i++){
+			System.out.print(ANSI_CYAN);
             System.out.print((8 - i) + " ");
+			System.out.print(ANSI_RESET);
             for(int j = 0; j < pieces.length; j ++){
                 printPiece(pieces[i][j], false);
             }
             System.out.println();
         }
+		System.out.print(ANSI_CYAN);
         System.out.println("  a b c d e f g h");
+		System.out.print(ANSI_RESET);
     }
 
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves){
@@ -143,8 +149,8 @@ public class UI {
 		List<ChessPiece> black = captured.stream().filter(x -> x.getColor() == Color.BLACK).collect(Collectors.toList());
 
 		System.out.println("Captured pieces:");
-		System.out.print("White:");
 		System.out.print(ANSI_WHITE);
+		System.out.print("White:");
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
 		System.out.print(ANSI_YELLOW);

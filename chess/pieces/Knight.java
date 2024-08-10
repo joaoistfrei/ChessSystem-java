@@ -7,14 +7,15 @@ import chess.Color;
 
 public class Knight extends ChessPiece{
 
+    // construtor
     public Knight(Board board, Color color) {
         super(board, color);
     }
 
     @Override
     public String toString(){
-        return "G";
-    }
+        return "G"; // pode estar se perguntando porque se representa com G e nao N, como tradicionalmente.
+    }               // essa pergunta ficara sem resposta...
 
     @Override
     public boolean[][] possibleMoves() {

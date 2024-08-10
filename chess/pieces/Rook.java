@@ -7,6 +7,7 @@ import chess.Color;
 
 public class Rook extends ChessPiece {
 
+    // construtor
     public Rook(Board board, Color color) {
         super(board, color);
     }

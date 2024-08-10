@@ -7,6 +7,7 @@ import chess.Color;
 
 public class Queen extends ChessPiece {
 
+    // construtor
     public Queen(Board board, Color color){
         super(board, color);
     }
@@ -50,7 +51,7 @@ public class Queen extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // diagonal superior esquerda
+        // diagonal inferior direita
         p.setValues(position.getRow() + 1, position.getColumn() + 1);
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
@@ -60,7 +61,7 @@ public class Queen extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // checando em cima da torre
+        // cima
         p.setValues(position.getRow() - 1, position.getColumn());
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
@@ -70,7 +71,7 @@ public class Queen extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // checando em baixo da torre
+        // baixo
         p.setValues(position.getRow() + 1, position.getColumn());
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
@@ -80,7 +81,7 @@ public class Queen extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // checando na direita da torre
+        // direita 
         p.setValues(position.getRow(), position.getColumn() + 1);
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
@@ -90,7 +91,7 @@ public class Queen extends ChessPiece {
             mat[p.getRow()][p.getColumn()] = true;
         }
 
-        // checando na esquerda da torre
+        // esquerda
         p.setValues(position.getRow(), position.getColumn() - 1);
         while(getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)){
             mat[p.getRow()][p.getColumn()] = true;
